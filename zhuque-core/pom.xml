@@ -19,9 +19,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-models</artifactId>
-        </dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-models</artifactId>
+    </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-annotations</artifactId>
