@@ -2,7 +2,7 @@ package com.github.zhuque.security.resolver;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.github.zhuque.core.base.R;
-import com.github.zhuque.core.context.BeanContextHandler;
+import com.github.zhuque.core.context.BaseContextHandler;
 import com.github.zhuque.core.utils.SpringUtils;
 import com.github.zhuque.security.annnotation.LoginUser;
 import com.github.zhuque.security.feign.UserQuery;
@@ -35,7 +35,7 @@ public class ContextArgResolver implements HandlerMethodArgumentResolver {
      */
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.hasMethodAnnotation(LoginUser.class) && methodParameter.getParameterType().equals
+        return methodParameter.hasParameterAnnotation(LoginUser.class) && methodParameter.getParameterType().equals
                 (SysUser.class);
     }
 
@@ -54,9 +54,9 @@ public class ContextArgResolver implements HandlerMethodArgumentResolver {
                                   ModelAndViewContainer modelAndViewContainer,
                                   NativeWebRequest nativeWebRequest,
                                   WebDataBinderFactory webDataBinderFactory) throws Exception {
-        Long userId = BeanContextHandler.getUserId();
-        String account = BeanContextHandler.getAccount();
-        String name = BeanContextHandler.getName();
+        Long userId = BaseContextHandler.getUserId();
+        String account = BaseContextHandler.getAccount();
+        String name = BaseContextHandler.getName();
 
         SysUser sysUser = SysUser.builder().id(userId).account(account).name(name).build();
         try {
@@ -71,7 +71,7 @@ public class ContextArgResolver implements HandlerMethodArgumentResolver {
                         .resource(loginUser.isResource())
                         .roles(loginUser.isRoles())
                         .station(loginUser.isStation()).build());
-                if (result.getIsSuccess() && ObjectUtil.isEmpty(result.getData())) {
+                if (result.getIsSuccess() && !ObjectUtil.isEmpty(result.getData())) {
                     return result.getData();
                 }
 

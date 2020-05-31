@@ -7,6 +7,7 @@
 		<module>zhuque-core</module>
         <module>zhuque-security</module>
         <module>zhuque-swagger</module>
+        <module>zhuque-jwt</module>
     </modules>
 
 	<groupId>com.github</groupId>
@@ -47,6 +48,8 @@
         spring-boot-dependencies中定义了hibernate-validator的版本号，所以在子层
         pom使用的时候直接pom使用，不用关注版本号-->
         <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
+
+        <jjwt.version>0.7.0</jjwt.version>
 
 	</properties>
 
@@ -140,6 +143,13 @@
                 <artifactId>springfox-bean-validators</artifactId>
                 <version>${springfox.swagger2.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

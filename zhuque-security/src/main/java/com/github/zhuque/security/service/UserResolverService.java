@@ -1,7 +1,7 @@
 package com.github.zhuque.security.service;
 
 import com.github.zhuque.core.base.R;
-import com.github.zhuque.core.context.BeanContextHandler;
+import com.github.zhuque.core.context.BaseContextHandler;
 import com.github.zhuque.security.feign.UserQuery;
 import com.github.zhuque.security.model.SysUser;
 
@@ -14,6 +14,6 @@ public interface UserResolverService {
     R<SysUser> getById(Long id, UserQuery userQuery);
 
     default R<SysUser> getById(UserQuery userQuery){
-        return getById(BeanContextHandler.getUserId(),userQuery);
+        return getById(BaseContextHandler.getUserId(),userQuery);
     }
 }

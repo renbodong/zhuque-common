@@ -6,7 +6,7 @@ package com.github.zhuque.core.context;
  * @version 1.0
  * @date 2020/5/17 12:33
  */
-public class BeanContextConstant {
+public class BaseContextConstant {
     /**
      * jwt封装的用户id
      */
@@ -21,6 +21,25 @@ public class BeanContextConstant {
      * jwt封装的用户账号
      */
     public static final String JWT_KEY_ACCOUNT = "account";
+    /**
+     * jwt封装的用户手机号
+     */
+    public static final String JWT_KEY_PHONE = "phone";
+
+    /**
+     * JWT token 签名
+     */
+    public static final String JWT_SIGN_KEY = "zhuque";
+
+    /**
+     * JWT中封装的 token 类型
+     */
+    public static final String JWT_KEY_TOKEN_TYPE = "token_type";
+
+    /**
+     * 刷新 Token
+     */
+    public static final String REFRESH_TOKEN_KEY = "refresh_token";
 
     /**
      * jwt封装的租户编码

@@ -14,7 +14,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/5/17 1:07
  */
-public class BeanContextHandler {
+public class BaseContextHandler {
     private static final ThreadLocal<Map<String, String>> THREAD_LOCAL = new ThreadLocal<>();
 
     /**
@@ -103,7 +103,7 @@ public class BeanContextHandler {
      * @return Long 用户id
      */
     public static Long getUserId() {
-        return get(BeanContextConstant.JWT_KEY_USR_ID, Long.class, 0L);
+        return get(BaseContextConstant.JWT_KEY_USR_ID, Long.class, 0L);
     }
 
     /**
@@ -121,7 +121,7 @@ public class BeanContextHandler {
      * @param userId Long 用户id
      */
     public static void setUserId(Long userId) {
-        set(BeanContextConstant.JWT_KEY_USR_ID, userId);
+        set(BaseContextConstant.JWT_KEY_USR_ID, userId);
     }
 
     /**
@@ -130,7 +130,7 @@ public class BeanContextHandler {
      * @param userId String 用户ID
      */
     public static void setUserId(String userId) {
-        set(BeanContextConstant.JWT_KEY_USR_ID, userId);
+        set(BaseContextConstant.JWT_KEY_USR_ID, userId);
     }
 
     /**
@@ -139,7 +139,7 @@ public class BeanContextHandler {
      * @param name String 用户姓名
      */
     public static void setName(String name) {
-        set(BeanContextConstant.JWT_KEY_NAME, name);
+        set(BaseContextConstant.JWT_KEY_NAME, name);
     }
 
     /**
@@ -148,7 +148,7 @@ public class BeanContextHandler {
      * @return String 用户姓名
      */
     public static String getName() {
-        return get(BeanContextConstant.JWT_KEY_NAME, String.class);
+        return get(BaseContextConstant.JWT_KEY_NAME, String.class);
     }
 
     /**
@@ -157,7 +157,7 @@ public class BeanContextHandler {
      * @return String 用户账号
      */
     public static String getAccount() {
-        return get(BeanContextConstant.JWT_KEY_ACCOUNT, String.class);
+        return get(BaseContextConstant.JWT_KEY_ACCOUNT, String.class);
     }
 
     /**
@@ -166,7 +166,7 @@ public class BeanContextHandler {
      * @param account String 用户账号
      */
     public static void setAccount(String account) {
-        set(BeanContextConstant.JWT_KEY_ACCOUNT, account);
+        set(BaseContextConstant.JWT_KEY_ACCOUNT, account);
     }
 
     /**
@@ -175,7 +175,7 @@ public class BeanContextHandler {
      * @param token String token
      */
     public static void setToken(String token) {
-        set(BeanContextConstant.BEARER_HEADER_KEY, token);
+        set(BaseContextConstant.BEARER_HEADER_KEY, token);
     }
 
     /**
@@ -184,7 +184,7 @@ public class BeanContextHandler {
      * @return String token
      */
     public static String getToken() {
-        return get(BeanContextConstant.BEARER_HEADER_KEY, String.class);
+        return get(BaseContextConstant.BEARER_HEADER_KEY, String.class);
     }
 
     /**
@@ -193,7 +193,7 @@ public class BeanContextHandler {
      * @param tenant String 租户编码
      */
     public static void setTenant(String tenant) {
-        set(BeanContextConstant.JWT_KEY_TENANT, tenant);
+        set(BaseContextConstant.JWT_KEY_TENANT, tenant);
     }
 
     /**
@@ -202,7 +202,7 @@ public class BeanContextHandler {
      * @return String 租户编码
      */
     public static String getTenant() {
-        return get(BeanContextConstant.JWT_KEY_TENANT, String.class);
+        return get(BaseContextConstant.JWT_KEY_TENANT, String.class);
     }
 
     /**
@@ -211,7 +211,7 @@ public class BeanContextHandler {
      * @param clientId String 客户端id
      */
     public static void setClientId(String clientId) {
-        set(BeanContextConstant.JWT_KEY_CLIENT_ID, clientId);
+        set(BaseContextConstant.JWT_KEY_CLIENT_ID, clientId);
     }
 
     /**
@@ -220,7 +220,7 @@ public class BeanContextHandler {
      * @return String 客户端id
      */
     public static String getClientId() {
-        return get(BeanContextConstant.JWT_KEY_CLIENT_ID, String.class);
+        return get(BaseContextConstant.JWT_KEY_CLIENT_ID, String.class);
     }
 
     /**
@@ -229,7 +229,7 @@ public class BeanContextHandler {
      * @param grayVersion String 灰度发布版本好
      */
     public static void setGrayVersion(String grayVersion) {
-        set(BeanContextConstant.GRAY_VERSION, grayVersion);
+        set(BaseContextConstant.GRAY_VERSION, grayVersion);
     }
 
     /**
@@ -238,7 +238,7 @@ public class BeanContextHandler {
      * @return String 灰度发布版本号
      */
     public static String getGrayVersion() {
-        return get(BeanContextConstant.GRAY_VERSION, String.class);
+        return get(BaseContextConstant.GRAY_VERSION, String.class);
     }
 
 }
