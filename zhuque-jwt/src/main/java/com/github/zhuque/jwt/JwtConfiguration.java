@@ -2,6 +2,7 @@ package com.github.zhuque.jwt;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 
 /**
  * @author zhuque
@@ -10,4 +11,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  */
 @EnableConfigurationProperties(value = {JwtProperties.class})
 public class JwtConfiguration {
+    @Bean
+    public TokenUtils getTokenUtil(JwtProperties authServerProperties) {
+        return new TokenUtils(authServerProperties);
+    }
 }
