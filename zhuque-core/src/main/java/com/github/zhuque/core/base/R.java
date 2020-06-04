@@ -3,6 +3,8 @@ package com.github.zhuque.core.base;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.zhuque.core.exception.BizException;
+import com.github.zhuque.core.exception.code.BaseExceptionCode;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
@@ -130,6 +132,18 @@ public class R<T> {
         return new R<>(OPERATION_EX_CODE,String.format(msg,args),null);
     }
 
+    public static <E> R<E> fail(BaseExceptionCode exceptionCode) {
+        return validFail(exceptionCode);
+    }
+
+    public static <E> R<E> fail(BizException exception) {
+        if (exception == null) {
+            return fail(DEF_ERROR_MESSAGE);
+        }
+        return new R<>(exception.getCode(),exception.getMessage(),null);
+    }
+
+
     /**
      * 请求失败消息，根据异常类型，获取不同的提供消息
      *
@@ -147,6 +161,13 @@ public class R<T> {
     public static <E> R<E> validFail(String msg, Object... args) {
         String message = (msg == null || msg.isEmpty()) ? DEF_ERROR_MESSAGE : msg;
         return new R<>(VALID_EX_CODE,  String.format(message, args),null);
+    }
+
+    public static <E> R<E> validFail(BaseExceptionCode exceptionCode) {
+        return new R<>(exceptionCode.getCode(),
+                (exceptionCode.getMessage() == null || exceptionCode.getMessage().isEmpty()) ? DEF_ERROR_MESSAGE :
+                        exceptionCode
+                        .getMessage(),null);
     }
 
 

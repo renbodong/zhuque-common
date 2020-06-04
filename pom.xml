@@ -8,6 +8,7 @@
         <module>zhuque-security</module>
         <module>zhuque-swagger</module>
         <module>zhuque-jwt</module>
+        <module>zhuque-boot</module>
     </modules>
 
 	<groupId>com.github</groupId>
